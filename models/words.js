@@ -5,6 +5,7 @@ module.exports = class Words {
 
   getWordsMap(comments) {
     let popWords = new Map();
+    //Разбиваем каждый body на слова и создаем коллекцию где считаем их
     comments.forEach((element) => {
       let sentence = element.body.split(/[\s\n]/);
       sentence.forEach((word) => {

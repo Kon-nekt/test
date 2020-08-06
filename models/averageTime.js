@@ -7,6 +7,7 @@ module.exports = class averageTime {
   }
 
   writeTime(time) {
+    //Считываем информацию о предыдущих запросах
     fs.readFile('./time.json', 'utf8', (err, timeString) => {
       if (err) {
         console.log('Fail:', err);
@@ -20,16 +21,17 @@ module.exports = class averageTime {
     });
   }
 
+  //Вывод информации о среднем времени
   static readTime() {
     fs.readFile('./time.json', 'utf8', (err, timeString) => {
       if (err) {
         console.log('Fail:', err);
       }
-	  let average = timeString.split`,`.map(Number);
-	  console.log(
-		'Среднее время пяти последних запросов: ',
-		average.reduce((a, b) => a + b) / average.length
-	  );
+      let average = timeString.split`,`.map(Number);
+      console.log(
+        'Среднее время пяти последних запросов: ',
+        average.reduce((a, b) => a + b) / average.length
+      );
     });
   }
 };
